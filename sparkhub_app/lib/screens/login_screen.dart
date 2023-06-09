@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sparkhub_app/widgets/GoogleLoginButton.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,15 +12,16 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Center(
+        child: Padding(
+      padding: const EdgeInsets.all(25.0),
       child: Column(
-        children: [
-          const Text('Sparkhub Hackathon App'),
-          MaterialButton(
-            onPressed: () {},
-            child: const Text('Login with Google'),
-          )
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          Text('Sparkhub Hackathon App'),
+          GoogleLoginButton(),
         ],
       ),
-    );
+    ));
   }
 }
