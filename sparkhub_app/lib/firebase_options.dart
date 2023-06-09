@@ -4,6 +4,8 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
+import 'package:sparkhub_app/apikey/apikey.dart';
+
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
 /// Example:
@@ -44,7 +46,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCpUSyMNnWIZ9pnOhpPJUsJHuN6pxzp7Ps',
+    apiKey: firebaseWebKey,
     appId: '1:368665369493:web:9d47accd4bc7e217b9749c',
     messagingSenderId: '368665369493',
     projectId: 'sparkhub-app-database',
@@ -54,7 +56,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC1AdMP9fdEk4p3JZ8ULxKuT3YlPnctw-w',
+    apiKey: firebaseAndroidKey,
     appId: '1:368665369493:android:93a866495644b19fb9749c',
     messagingSenderId: '368665369493',
     projectId: 'sparkhub-app-database',
@@ -62,22 +64,24 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCKhhhH7_5HfvhTAx6wRKkcogWZjyesFxk',
+    apiKey: firebaseIOSKey,
     appId: '1:368665369493:ios:837de3574d66be7eb9749c',
     messagingSenderId: '368665369493',
     projectId: 'sparkhub-app-database',
     storageBucket: 'sparkhub-app-database.appspot.com',
-    iosClientId: '368665369493-9n18urnnd51dt42s5vgpr3ndtkun2eim.apps.googleusercontent.com',
+    iosClientId:
+        '368665369493-9n18urnnd51dt42s5vgpr3ndtkun2eim.apps.googleusercontent.com',
     iosBundleId: 'com.example.sparkhubApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCKhhhH7_5HfvhTAx6wRKkcogWZjyesFxk',
+    apiKey: firebaseIOSKey,
     appId: '1:368665369493:ios:837de3574d66be7eb9749c',
     messagingSenderId: '368665369493',
     projectId: 'sparkhub-app-database',
     storageBucket: 'sparkhub-app-database.appspot.com',
-    iosClientId: '368665369493-9n18urnnd51dt42s5vgpr3ndtkun2eim.apps.googleusercontent.com',
+    iosClientId:
+        '368665369493-9n18urnnd51dt42s5vgpr3ndtkun2eim.apps.googleusercontent.com',
     iosBundleId: 'com.example.sparkhubApp',
   );
 }
