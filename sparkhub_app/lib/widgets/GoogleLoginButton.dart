@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sparkhub_app/screens/home_screen.dart';
 import 'package:sparkhub_app/utils/authentication.dart';
 
 class GoogleLoginButton extends StatefulWidget {
@@ -21,6 +22,8 @@ class _GoogleLoginButtonState extends State<GoogleLoginButton> {
         await signInWithGoogle().then((user) {
           print(user);
           if (user != null) {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const HomeScreen()));
             print('Signed In');
             print(user.uid);
           }
