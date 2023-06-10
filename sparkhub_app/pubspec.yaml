@@ -41,6 +41,10 @@ dependencies:
   google_sign_in: ^6.1.4
   firebase_database: ^10.2.2
 
+  # For the database service calls
+  http: ^0.13.3
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

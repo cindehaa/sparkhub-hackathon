@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:sparkhub_app/screens/login_screen.dart';
+import 'package:sparkhub_app/screens/home_screen.dart';
+import 'package:sparkhub_app/screens/backend-testing/test.dart';
+import 'package:sparkhub_app/backend/firebase.dart';
 
-Future main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +25,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: LoginScreen(),
+      initialRoute: '/',
     );
   }
 }
