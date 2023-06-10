@@ -3,9 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:sparkhub_app/screens/home_screen.dart';
 import 'firebase_options.dart';
 import 'package:sparkhub_app/screens/login_screen.dart';
-import 'package:sparkhub_app/screens/home_screen.dart';
-import 'package:sparkhub_app/screens/backend-testing/test.dart';
-import 'package:sparkhub_app/backend/firebase.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
