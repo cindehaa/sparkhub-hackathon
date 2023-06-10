@@ -15,6 +15,8 @@ class _NavbarState extends State<Navbar> {
   Widget build(BuildContext context) {
     return NavigationRail(
       selectedIndex: _selectedState,
+      groupAlignment: -1,
+      labelType: NavigationRailLabelType.all,
       onDestinationSelected: (int index) {
         switch (_selectedState) {
           case 0:
@@ -30,8 +32,6 @@ class _NavbarState extends State<Navbar> {
           _selectedState = index;
         });
       },
-      groupAlignment: -1,
-      labelType: NavigationRailLabelType.all,
       destinations: const <NavigationRailDestination>[
         NavigationRailDestination(
           icon: Icon(Icons.account_circle_outlined),
