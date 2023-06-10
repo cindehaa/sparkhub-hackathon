@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
+import 'package:sparkhub_app/widgets/home_screen/Navbar.dart';
+import 'package:sparkhub_app/widgets/home_screen/buy_page.dart';
+import 'package:sparkhub_app/widgets/home_screen/create_listing_page.dart';
+import 'package:sparkhub_app/widgets/home_screen/profile_page.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 late User? user;
@@ -15,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int navValue = 1;
+
   @override
   void initState() {
     super.initState();
@@ -23,12 +26,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [const Text('Home Page'), Text('User Email: ${user!.email}')],
-      ),
+    return Row(
+      children: [
+        Navbar(changeScreen: (value) {
+          setState(() {
+            navValue = value;
+          });
+        }),
+        const VerticalDivider(
+          width: 1,
+          thickness: 1,
+        ),
+        IndexedStack(
+          index: navValue,
+          children: const <Widget>[
+            ProfilePage(),
+            BuyPage(),
+            CreateListingPage(),
+          ],
+        )
+      ],
     );
   }
 }

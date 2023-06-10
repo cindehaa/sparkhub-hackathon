@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Navbar extends StatefulWidget {
-  const Navbar({super.key});
+  final Function(int value) changeScreen;
+  const Navbar({super.key, required this.changeScreen});
 
   @override
   State<Navbar> createState() => _NavbarState();
@@ -9,7 +10,6 @@ class Navbar extends StatefulWidget {
 
 class _NavbarState extends State<Navbar> {
   int _selectedState = 1;
-  String pageState = "BUY";
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +18,12 @@ class _NavbarState extends State<Navbar> {
       groupAlignment: -1,
       labelType: NavigationRailLabelType.all,
       onDestinationSelected: (int index) {
-        switch (_selectedState) {
-          case 0:
-            pageState = "PROFILE";
-            break;
-          case 1:
-            pageState = "BUY";
-            break;
-          case 2:
-            pageState = "CREATE";
+        if (index != _selectedState) {
+          widget.changeScreen(index);
+          setState(() {
+            _selectedState = index;
+          });
         }
-        setState(() {
-          _selectedState = index;
-        });
       },
       destinations: const <NavigationRailDestination>[
         NavigationRailDestination(
