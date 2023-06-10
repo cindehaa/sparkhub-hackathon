@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sparkhub_app/screens/home_screen.dart';
 import 'package:sparkhub_app/utils/authentication.dart';
+import 'package:sparkhub_app/utils/user_db.dart';
+
 
 class GoogleLoginButton extends StatefulWidget {
   const GoogleLoginButton({super.key});
@@ -26,6 +28,9 @@ class _GoogleLoginButtonState extends State<GoogleLoginButton> {
                 MaterialPageRoute(builder: (context) => const HomeScreen()));
             print('Signed In');
             print(user.uid);
+            print(user.displayName);
+            print(user.email);
+            storeUserInFirebase(user.uid, user.displayName, user.email);
           }
         }).catchError((error) {
           print('Registration Error: $error');

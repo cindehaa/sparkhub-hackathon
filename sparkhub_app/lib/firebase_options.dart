@@ -3,19 +3,18 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-
-import 'package:sparkhub_app/apikey/apikey.dart';
+  
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
-/// // ...
-/// await Firebase.initializeApp(
-///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
-/// ```
+// / import 'firebase_options.dart';
+// / // ...
+// / await Firebase.initializeApp(
+// /   options: DefaultFirebaseOptions.currentPlatform,
+// / );
+// / ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -46,42 +45,44 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: firebaseWebKey,
+    apiKey: 'AIzaSyBaD5bhviIFqmNNZfMvD0qbym4E3Ox-K84',
     appId: '1:368665369493:web:9d47accd4bc7e217b9749c',
     messagingSenderId: '368665369493',
     projectId: 'sparkhub-app-database',
     authDomain: 'sparkhub-app-database.firebaseapp.com',
+    databaseURL: 'https://sparkhub-app-database-default-rtdb.firebaseio.com',
     storageBucket: 'sparkhub-app-database.appspot.com',
     measurementId: 'G-WJ6N1ZV93T',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: firebaseAndroidKey,
+    apiKey: 'AIzaSyCVmhqe_Ws7d4Pbf_q18G9uUr1ivo_tkng',
     appId: '1:368665369493:android:93a866495644b19fb9749c',
     messagingSenderId: '368665369493',
     projectId: 'sparkhub-app-database',
+    databaseURL: 'https://sparkhub-app-database-default-rtdb.firebaseio.com',
     storageBucket: 'sparkhub-app-database.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: firebaseIOSKey,
+    apiKey: 'AIzaSyB7tTd_16dHTJoJjed6fHqHU5ogVrIw6J8',
     appId: '1:368665369493:ios:837de3574d66be7eb9749c',
     messagingSenderId: '368665369493',
     projectId: 'sparkhub-app-database',
+    databaseURL: 'https://sparkhub-app-database-default-rtdb.firebaseio.com',
     storageBucket: 'sparkhub-app-database.appspot.com',
-    iosClientId:
-        '368665369493-9n18urnnd51dt42s5vgpr3ndtkun2eim.apps.googleusercontent.com',
+    iosClientId: '368665369493-9n18urnnd51dt42s5vgpr3ndtkun2eim.apps.googleusercontent.com',
     iosBundleId: 'com.example.sparkhubApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: firebaseIOSKey,
+    apiKey: 'AIzaSyB7tTd_16dHTJoJjed6fHqHU5ogVrIw6J8',
     appId: '1:368665369493:ios:837de3574d66be7eb9749c',
     messagingSenderId: '368665369493',
     projectId: 'sparkhub-app-database',
+    databaseURL: 'https://sparkhub-app-database-default-rtdb.firebaseio.com',
     storageBucket: 'sparkhub-app-database.appspot.com',
-    iosClientId:
-        '368665369493-9n18urnnd51dt42s5vgpr3ndtkun2eim.apps.googleusercontent.com',
+    iosClientId: '368665369493-9n18urnnd51dt42s5vgpr3ndtkun2eim.apps.googleusercontent.com',
     iosBundleId: 'com.example.sparkhubApp',
   );
 }

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "368665369493",
+    "firebase_url": "https://sparkhub-app-database-default-rtdb.firebaseio.com",
     "project_id": "sparkhub-app-database",
     "storage_bucket": "sparkhub-app-database.appspot.com"
   },
@@ -14,21 +15,28 @@
       },
       "oauth_client": [
         {
-          "client_id": "368665369493-o3f46h2nann2g88l4t129pl3mo4um0k9.apps.googleusercontent.com",
+          "client_id": "368665369493-e3i13vlm484meo8gcm35n9mc0bj3tda8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC1AdMP9fdEk4p3JZ8ULxKuT3YlPnctw-w"
+          "current_key": "AIzaSyCVmhqe_Ws7d4Pbf_q18G9uUr1ivo_tkng"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "368665369493-o3f46h2nann2g88l4t129pl3mo4um0k9.apps.googleusercontent.com",
+              "client_id": "368665369493-e3i13vlm484meo8gcm35n9mc0bj3tda8.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "368665369493-9n18urnnd51dt42s5vgpr3ndtkun2eim.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sparkhubApp"
+              }
             }
           ]
         }
