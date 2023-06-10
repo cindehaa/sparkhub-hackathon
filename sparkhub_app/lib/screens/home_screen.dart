@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:sparkhub_app/widgets/Navbar.dart';
+import 'package:sparkhub_app/widgets/home_screen/Navbar.dart';
+import 'package:sparkhub_app/widgets/home_screen/buy_page.dart';
+import 'package:sparkhub_app/widgets/home_screen/create_listing_page.dart';
+import 'package:sparkhub_app/widgets/home_screen/profile_page.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 late User? user;
@@ -40,28 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         IndexedStack(
           index: navValue,
-          children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Text('Profile Page'),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Text('Buy Page'),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Text('Add Page'),
-              ],
-            ),
+          children: const <Widget>[
+            ProfilePage(),
+            BuyPage(),
+            CreateListingPage(),
           ],
         )
       ],
