@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sparkhub_app/widgets/Navbar.dart';
 import 'firebase_options.dart';
 import 'package:sparkhub_app/screens/login_screen.dart';
 
