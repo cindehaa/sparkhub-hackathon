@@ -4,8 +4,10 @@ import 'package:sparkhub_app/screens/home_screen.dart';
 import 'firebase_options.dart';
 import 'package:sparkhub_app/screens/login_screen.dart';
 import 'package:sparkhub_app/screens/home_screen.dart';
-import 'package:sparkhub_app/screens/backend-testing/test.dart';
+// import 'package:sparkhub_app/screens/backend-testing/test.dart';
 import 'package:sparkhub_app/backend/firebase.dart';
+import 'package:sparkhub_app/widgets/buy_screen/item_card.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: ItemCard(),
       initialRoute: '/',
     );
   }

@@ -44,6 +44,10 @@ dependencies:
   # For the database service calls
   http: ^0.13.3
 
+  # For Unsplash
+  cached_network_image: ^3.1.0
+
+
 
 dev_dependencies:
   flutter_test:
