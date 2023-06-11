@@ -43,6 +43,7 @@ dependencies:
 
   # For the database service calls
   http: ^0.13.3
+  file_picker: ^5.3.1
 
 
 dev_dependencies:
