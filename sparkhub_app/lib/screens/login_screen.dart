@@ -71,20 +71,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 // ),
                 SizedBox(height: 30),
                 Row(
-                    // login button row
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green, // background
-                          foregroundColor: Color(0xFFEAD7B2), // foreground
-                        ),
-                        child: Text("Log in/ sign up with Google"),
-                        onPressed: () {
-                          const GoogleLoginButton();
-                        },
-                      ),
-                    ]),
+                  // login button row
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    GoogleLoginButton(),
+                  ],
+                ),
               ],
             )),
       ),
