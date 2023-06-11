@@ -7,9 +7,9 @@ import 'package:sparkhub_app/utils/card_image.dart';
 class ItemCard extends StatelessWidget {
   const ItemCard({super.key});
 
-// tomato because why not
+// will be replaced by the title of the item card
+// tomato for now because why not
   final String keyword = 'tomato';
-
 
   @override
   Widget build(BuildContext context) {
