@@ -77,18 +77,16 @@ packages:
     dependency: transitive
     description:
       name: ffi
-      sha256: ed5337a5660c506388a9f012be0288fb38b49020ce2b45fe1f8b8323fe429f99
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
-  file:
-    dependency: transitive
+  file_picker:
+    dependency: "direct main"
     description:
-      name: file
-      sha256: "1b92bec4fc2a72f59a8e15af5f52cd441e4a7860b49499d69dfa817af20e925d"
-      url: "https://pub.dev"
+      name: file_picker
+      url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.4"
+    version: "5.3.1"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -170,8 +168,7 @@ packages:
     dependency: "direct dev"
     description:
       name: flutter_lints
-      sha256: aeb0b80a8b3709709c9cc496cdc027c5b3216796bc0af0ce1007eaf24464fd4c
-      url: "https://pub.dev"
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
   flutter_test:
@@ -468,7 +465,14 @@ packages:
       sha256: ee1505df1426458f7f60aac270645098d318a8b4766d85fde75f76f2e21807d1
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "2.1.2"
+  win32:
+    dependency: transitive
+    description:
+      name: win32
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.4"
 sdks:
   dart: ">=3.0.0 <4.0.0"
   flutter: ">=3.3.0"
