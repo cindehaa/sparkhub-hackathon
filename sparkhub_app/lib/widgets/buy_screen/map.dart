@@ -145,11 +145,11 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
                     100.0,
                   ),
                 );
-                // getJsonData(
-                //     snapshot.data!.latitude,
-                //     snapshot.data!.longitude,
-                //     widget.markerPosition!.latitude,
-                //     widget.markerPosition!.longitude);
+                getJsonData(
+                    snapshot.data!.latitude,
+                    snapshot.data!.longitude,
+                    widget.markerPosition!.latitude,
+                    widget.markerPosition!.longitude);
               },
             );
           default:

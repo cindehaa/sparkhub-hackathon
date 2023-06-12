@@ -20,8 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
-  
+  sdk: '>=2.18.4 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -47,16 +46,10 @@ dependencies:
   http: ^0.13.3
   file_picker: ^5.3.1
   google_fonts: ^4.0.4
-
-  # For Unsplash
-  cached_network_image: ^3.1.0
-
-  # For map
-  geolocator: ^8.0.1
-  google_maps_flutter: ^2.3.0
+  geolocator: ^9.0.2
+  cached_network_image: ^3.2.3
   flutter_polyline_points: ^1.0.0
-
-
+  google_maps_flutter: ^2.3.0
 
 
 dev_dependencies:
