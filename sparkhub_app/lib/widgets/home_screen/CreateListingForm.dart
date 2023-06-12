@@ -60,27 +60,33 @@ class _CreateListingFormState extends State<CreateListingForm> {
                 builder: (formState) {
                   return Column(
                     children: [
-                      InkWell(
-                        onTap: () async {
-                          FilePickerResult? result =
-                              await FilePicker.platform.pickFiles(
-                            type: FileType.image,
-                            allowMultiple: true,
-                          );
-                          if (result != null) {
-                            List<Uint8List?> fileByteList =
-                                result.files.map((e) => e.bytes).toList();
-                            if (fileByteList.length <= 3) {
-                              formState.didChange(fileByteList);
-                              imageBytes = fileByteList.first;
-                            } else {
-                              formState.didChange('TOO_MANY_FILES');
+                      SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: InkWell(
+                          onTap: () async {
+                            FilePickerResult? result =
+                                await FilePicker.platform.pickFiles(
+                              type: FileType.custom,
+                              allowedExtensions: ['png', 'jpg', 'jpeg'],
+                              allowMultiple: true,
+                            );
+                            if (result != null) {
+                              List<Uint8List?> fileByteList =
+                                  result.files.map((e) => e.bytes).toList();
+                              if (fileByteList.length <= 3) {
+                                formState.didChange(fileByteList);
+                                imageBytes = fileByteList.first;
+                              } else {
+                                formState.didChange('TOO_MANY_FILES');
+                              }
                             }
-                          }
-                        },
-                        child: formState.value == null
-                            ? const Icon(Icons.upload)
-                            : Image.memory(imageBytes!),
+                          },
+                          child: formState.value == null ||
+                                  formState.value == 'TOO_MANY_FILES'
+                              ? const Icon(Icons.upload)
+                              : Image.memory(imageBytes!),
+                        ),
                       ),
                       if (formState.hasError)
                         Padding(
