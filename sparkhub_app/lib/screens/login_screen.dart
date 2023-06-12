@@ -12,6 +12,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    //String imageUrl = "https://media.istockphoto.com/id/1170724138/vector/farmers-market-hand-drawn-lettering.jpg?s=612x612&w=0&k=20&c=__LbJVEDLc66smBIk7BRHgoo2HfCYysOGJfiTD3AImA=";
+
     return Scaffold(
       backgroundColor: const Color(0xFF408444),
       body: Center(
@@ -69,20 +71,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 // ),
                 SizedBox(height: 30),
                 Row(
-                    // login button row
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green, // background
-                          foregroundColor: Color(0xFFEAD7B2), // foreground
-                        ),
-                        child: Text("Log in/ sign up with Google"),
-                        onPressed: () {
-                          const GoogleLoginButton();
-                        },
-                      ),
-                    ]),
+                  // login button row
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    GoogleLoginButton(),
+                  ],
+                ),
               ],
             )),
       ),
