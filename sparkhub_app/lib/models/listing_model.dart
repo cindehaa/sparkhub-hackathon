@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class listing_model {
-  Uint8List? image;
+  List<Uint8List>? image;
   String? description;
   String? category;
   String? priceType;
@@ -27,7 +27,7 @@ class listing_model {
         'category': category,
         'description': description,
         'inventory': inventory,
-        'picture': image.toString(),
+        'picture': image?.map((e) => e.toString()),
         'seller': name,
         'uid': uid,
         'unitprice': unitPrice
