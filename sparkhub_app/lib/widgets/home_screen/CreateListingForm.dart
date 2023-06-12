@@ -30,8 +30,11 @@ class CreateListingForm extends StatefulWidget {
 class _CreateListingFormState extends State<CreateListingForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Uint8List? imageBytes;
+  List<Uint8List?> fileByteList = [];
   String categoryValue = categories.first;
   listing_model listing = listing_model();
+  int selectedImageIndex = 0;
+  late int maxImages;
 
   @override
   Widget build(BuildContext context) {
@@ -54,39 +57,120 @@ class _CreateListingFormState extends State<CreateListingForm> {
                   return null;
                 },
                 onSaved: (value) {
-                  listing.image =
-                      Uint8List.fromList(value.toString().codeUnits);
+                  listing.image = fileByteList.cast<Uint8List>();
                 },
                 builder: (formState) {
                   return Column(
                     children: [
-                      SizedBox(
-                        width: 200,
-                        height: 200,
-                        child: InkWell(
-                          onTap: () async {
-                            FilePickerResult? result =
-                                await FilePicker.platform.pickFiles(
-                              type: FileType.custom,
-                              allowedExtensions: ['png', 'jpg', 'jpeg'],
-                              allowMultiple: true,
-                            );
-                            if (result != null) {
-                              List<Uint8List?> fileByteList =
-                                  result.files.map((e) => e.bytes).toList();
-                              if (fileByteList.length <= 3) {
-                                formState.didChange(fileByteList);
-                                imageBytes = fileByteList.first;
-                              } else {
-                                formState.didChange('TOO_MANY_FILES');
-                              }
-                            }
-                          },
-                          child: formState.value == null ||
-                                  formState.value == 'TOO_MANY_FILES'
-                              ? const Icon(Icons.upload)
-                              : Image.memory(imageBytes!),
-                        ),
+                      Row(
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              if (fileByteList.asMap().containsKey(1))
+                                SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: Image.memory(fileByteList[
+                                      (selectedImageIndex + 1) % maxImages]!),
+                                ),
+                              if (fileByteList.asMap().containsKey(2))
+                                const SizedBox(
+                                  width: 50,
+                                  height: 10,
+                                ),
+                              if (fileByteList.asMap().containsKey(2))
+                                SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: Image.memory(fileByteList[
+                                      (selectedImageIndex + 2) % maxImages]!),
+                                ),
+                              if (fileByteList.asMap().containsKey(3))
+                                const SizedBox(
+                                  width: 50,
+                                  height: 10,
+                                ),
+                              if (fileByteList.asMap().containsKey(3))
+                                SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: Image.memory(fileByteList[
+                                      (selectedImageIndex + 3) % maxImages]!),
+                                ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              SizedBox(
+                                width: 200,
+                                height: 200,
+                                child: InkWell(
+                                  onTap: () async {
+                                    FilePickerResult? result =
+                                        await FilePicker.platform.pickFiles(
+                                      type: FileType.custom,
+                                      allowedExtensions: ['png', 'jpg', 'jpeg'],
+                                      allowMultiple: true,
+                                    );
+                                    if (result != null) {
+                                      fileByteList = result.files
+                                          .map((e) => e.bytes)
+                                          .toList();
+                                      maxImages = fileByteList.length;
+                                      if (fileByteList.length <= maxImages) {
+                                        formState.didChange(fileByteList);
+                                      } else {
+                                        formState.didChange('TOO_MANY_FILES');
+                                      }
+                                    }
+                                  },
+                                  child: formState.value == null ||
+                                          formState.value == 'TOO_MANY_FILES'
+                                      ? const Icon(Icons.upload)
+                                      : Image.memory(fileByteList[
+                                          selectedImageIndex % maxImages]!),
+                                ),
+                              ),
+                              if (formState.value != null)
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          selectedImageIndex--;
+                                        });
+                                      },
+                                      child: const Center(
+                                          child: Icon(
+                                        Icons.arrow_left,
+                                        size: 20,
+                                      )),
+                                    ),
+                                    Text(
+                                      '${selectedImageIndex % maxImages + 1} / $maxImages',
+                                      style: const TextStyle(inherit: true),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          selectedImageIndex++;
+                                        });
+                                      },
+                                      child: const Center(
+                                          child: Icon(
+                                        Icons.arrow_right,
+                                        size: 20,
+                                      )),
+                                    )
+                                  ],
+                                )
+                            ],
+                          ),
+                        ],
                       ),
                       if (formState.hasError)
                         Padding(
@@ -132,7 +216,7 @@ class _CreateListingFormState extends State<CreateListingForm> {
                 },
                 onChanged: (value) {
                   setState(() {
-                    categoryValue = value!;
+                    categoryValue = value;
                   });
                 },
               ),
@@ -215,11 +299,13 @@ class _CreateListingFormState extends State<CreateListingForm> {
                     database
                         .child('listings')
                         .child(newKey!)
-                        .set(listing.toJson());
-                    database
-                        .child(
-                            'userProfiles/${currentUser?.uid}/userListings/${DateTime.now().microsecondsSinceEpoch}')
-                        .set(newKey);
+                        .set(listing.toJson())
+                        .then((value) => {
+                              database
+                                  .child(
+                                      'userProfiles/${currentUser?.uid}/userListings/${DateTime.now().microsecondsSinceEpoch}')
+                                  .set(newKey)
+                            });
                   }
                 },
                 child: const Text('Submit'),
