@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:geolocator/geolocator.dart';
 
 class listing_model {
   List<Uint8List>? image;
@@ -11,6 +12,7 @@ class listing_model {
 
   String? uid;
   String? name;
+  Position? location;
 
   listing_model(
       {this.image,
@@ -21,7 +23,8 @@ class listing_model {
       this.associatedFarm,
       this.inventory,
       this.uid,
-      this.name});
+      this.name,
+      this.location});
 
   Map toJson() => {
         'category': category,
@@ -30,6 +33,7 @@ class listing_model {
         'picture': image?.map((e) => e.toString()),
         'seller': name,
         'uid': uid,
-        'unitprice': unitPrice
+        'unitprice': unitPrice,
+        'location': location?.toJson().toString(),
       };
 }

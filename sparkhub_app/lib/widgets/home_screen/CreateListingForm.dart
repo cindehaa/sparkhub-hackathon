@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:sparkhub_app/models/listing_model.dart';
+import 'package:sparkhub_app/utils/getLocation.dart';
 
 final database = FirebaseDatabase.instance.ref();
 FirebaseAuth auth = FirebaseAuth.instance;
@@ -294,6 +295,7 @@ class _CreateListingFormState extends State<CreateListingForm> {
                         .child('name')
                         .get();
                     listing.name = snapshot.value.toString();
+                    listing.location = await determinePosition();
                     String? newKey =
                         await database.child('listings').push().key;
                     database
