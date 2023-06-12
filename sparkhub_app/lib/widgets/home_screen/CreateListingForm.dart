@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,7 +29,7 @@ class CreateListingForm extends StatefulWidget {
 
 class _CreateListingFormState extends State<CreateListingForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  Uint8List? imagesBytes;
+  Uint8List? imageBytes;
   String categoryValue = categories.first;
   listing_model listing = listing_model();
 
@@ -47,6 +48,8 @@ class _CreateListingFormState extends State<CreateListingForm> {
                 validator: (value) {
                   if (value == null) {
                     return 'Please upload an image';
+                  } else if (value == 'TOO_MANY_FILES') {
+                    return 'Please upload up to a maximum of 3 images';
                   }
                   return null;
                 },
@@ -62,16 +65,22 @@ class _CreateListingFormState extends State<CreateListingForm> {
                           FilePickerResult? result =
                               await FilePicker.platform.pickFiles(
                             type: FileType.image,
+                            allowMultiple: true,
                           );
                           if (result != null) {
-                            Uint8List? fileBytes = result.files.first.bytes;
-                            formState.didChange(fileBytes);
-                            imagesBytes = fileBytes;
+                            List<Uint8List?> fileByteList =
+                                result.files.map((e) => e.bytes).toList();
+                            if (fileByteList.length <= 3) {
+                              formState.didChange(fileByteList);
+                              imageBytes = fileByteList.first;
+                            } else {
+                              formState.didChange('TOO_MANY_FILES');
+                            }
                           }
                         },
                         child: formState.value == null
                             ? const Icon(Icons.upload)
-                            : Image.memory(imagesBytes!),
+                            : Image.memory(imageBytes!),
                       ),
                       if (formState.hasError)
                         Padding(
