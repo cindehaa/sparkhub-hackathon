@@ -37,15 +37,13 @@ class _HomeScreenState extends State<HomeScreen> {
           width: 1,
           thickness: 1,
         ),
-        Expanded(
-          child: IndexedStack(
-            index: navValue,
-            children: const <Widget>[
-              ProfilePage(),
-              BuyPage(),
-              CreateListingPage(),
-            ],
-          ),
+        IndexedStack(
+          index: navValue,
+          children: const <Widget>[
+            ProfilePage(),
+            BuyPage(),
+            CreateListingPage(),
+          ],
         )
       ],
     );

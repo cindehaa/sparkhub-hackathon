@@ -32,7 +32,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -45,8 +44,6 @@ dependencies:
 
   # For the database service calls
   http: ^0.13.3
-  file_picker: ^5.3.1
-  google_fonts: ^4.0.4
 
   # For Unsplash
   cached_network_image: ^3.1.0

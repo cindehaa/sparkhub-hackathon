@@ -3,6 +3,7 @@ import 'package:sparkhub_app/screens/home_screen.dart';
 import 'package:sparkhub_app/utils/authentication.dart';
 import 'package:sparkhub_app/utils/user_db.dart';
 
+
 class GoogleLoginButton extends StatefulWidget {
   const GoogleLoginButton({super.key});
 
@@ -15,22 +16,21 @@ class _GoogleLoginButtonState extends State<GoogleLoginButton> {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.green, // background
-        foregroundColor: const Color(0xFFEAD7B2), // foreground
-      ),
+    return MaterialButton(
       onPressed: () async {
         setState(() {
           _isProcessing = true;
         });
         await signInWithGoogle().then((user) {
+          print(user);
           if (user != null) {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const HomeScreen()));
             print('Signed In');
-            storeUserInFirebase(user.uid, user.displayName, user.email, () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const HomeScreen()));
-            });
+            print(user.uid);
+            print(user.displayName);
+            print(user.email);
+            storeUserInFirebase(user.uid, user.displayName, user.email);
           }
         }).catchError((error) {
           print('Registration Error: $error');

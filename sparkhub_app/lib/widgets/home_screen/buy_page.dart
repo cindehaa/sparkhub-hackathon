@@ -1,6 +1,8 @@
 // Use buy_screen directory for more buy_screen specific widgets
 
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
 class BuyPage extends StatelessWidget {
   const BuyPage({super.key});
