@@ -38,6 +38,6 @@ class listing_model {
         'uid': uid,
         'unitprice': unitPrice,
         'produce_name': produceName,
-        'location': location!.toJson(),
+        'location': location?.toJson().toString(),
       };
 }

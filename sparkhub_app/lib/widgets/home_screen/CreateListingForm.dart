@@ -314,23 +314,24 @@ class _CreateListingFormState extends State<CreateListingForm> {
                         .get();
                     listing.name = snapshot.value.toString();
                     listing.location = await determinePosition();
-                    // String? newKey =
-                    //     await database.child('listings').push().key;
-                    // database
-                    //     .child('listings')
-                    //     .child(newKey!)
-                    //     .set(listing.toJson())
-                    //     .then((value) => {
-                    //           database
-                    //               .child(
-                    //                   'userProfiles/${currentUser?.uid}/userListings/${DateTime.now().microsecondsSinceEpoch}')
-                    //               .set(newKey)
-                    //         });
+                     String? newKey =
+                         await database.child('listings').push().key;
+                     database
+                         .child('listings')
+                         .child(newKey!)
+                         .set(listing.toJson())
+                         .then((value) => {
+                               database
+                                   .child(
+                                       'userProfiles/${currentUser?.uid}/userListings/${DateTime.now().microsecondsSinceEpoch}')
+                                   .set(newKey)
+                             });
                     setState(() {});
                   }
                 },
                 child: const Text('Submit'),
-              )
+              ),
+
             ],
           ),
         ),
