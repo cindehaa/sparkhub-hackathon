@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:sparkhub_app/models/listing_model.dart';
 import 'package:sparkhub_app/utils/getLocation.dart';
+import 'package:sparkhub_app/widgets/buy_screen/item_card.dart';
 
 final database = FirebaseDatabase.instance.ref();
 FirebaseAuth auth = FirebaseAuth.instance;
@@ -35,7 +36,7 @@ class _CreateListingFormState extends State<CreateListingForm> {
   String categoryValue = categories.first;
   listing_model listing = listing_model();
   int selectedImageIndex = 0;
-  late int maxImages;
+  int maxImages = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -65,43 +66,45 @@ class _CreateListingFormState extends State<CreateListingForm> {
                     children: [
                       Row(
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              if (fileByteList.asMap().containsKey(1))
-                                SizedBox(
-                                  width: 50,
-                                  height: 50,
-                                  child: Image.memory(fileByteList[
-                                      (selectedImageIndex + 1) % maxImages]!),
-                                ),
-                              if (fileByteList.asMap().containsKey(2))
-                                const SizedBox(
-                                  width: 50,
-                                  height: 10,
-                                ),
-                              if (fileByteList.asMap().containsKey(2))
-                                SizedBox(
-                                  width: 50,
-                                  height: 50,
-                                  child: Image.memory(fileByteList[
-                                      (selectedImageIndex + 2) % maxImages]!),
-                                ),
-                              if (fileByteList.asMap().containsKey(3))
-                                const SizedBox(
-                                  width: 50,
-                                  height: 10,
-                                ),
-                              if (fileByteList.asMap().containsKey(3))
-                                SizedBox(
-                                  width: 50,
-                                  height: 50,
-                                  child: Image.memory(fileByteList[
-                                      (selectedImageIndex + 3) % maxImages]!),
-                                ),
-                            ],
-                          ),
+                          if (formState.value != null &&
+                              formState.value != 'TOO_MANY_FILES')
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                if (fileByteList.asMap().containsKey(1))
+                                  SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: Image.memory(fileByteList[
+                                        (selectedImageIndex + 1) % maxImages]!),
+                                  ),
+                                if (fileByteList.asMap().containsKey(2))
+                                  const SizedBox(
+                                    width: 50,
+                                    height: 10,
+                                  ),
+                                if (fileByteList.asMap().containsKey(2))
+                                  SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: Image.memory(fileByteList[
+                                        (selectedImageIndex + 2) % maxImages]!),
+                                  ),
+                                if (fileByteList.asMap().containsKey(3))
+                                  const SizedBox(
+                                    width: 50,
+                                    height: 10,
+                                  ),
+                                if (fileByteList.asMap().containsKey(3))
+                                  SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: Image.memory(fileByteList[
+                                        (selectedImageIndex + 3) % maxImages]!),
+                                  ),
+                              ],
+                            ),
                           Column(
                             children: [
                               SizedBox(
@@ -120,7 +123,7 @@ class _CreateListingFormState extends State<CreateListingForm> {
                                           .map((e) => e.bytes)
                                           .toList();
                                       maxImages = fileByteList.length;
-                                      if (fileByteList.length <= maxImages) {
+                                      if (fileByteList.length <= 4) {
                                         formState.didChange(fileByteList);
                                       } else {
                                         formState.didChange('TOO_MANY_FILES');
@@ -134,7 +137,8 @@ class _CreateListingFormState extends State<CreateListingForm> {
                                           selectedImageIndex % maxImages]!),
                                 ),
                               ),
-                              if (formState.value != null)
+                              if (formState.value != null &&
+                                  formState.value != 'TOO_MANY_FILES')
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -188,6 +192,20 @@ class _CreateListingFormState extends State<CreateListingForm> {
                         )
                     ],
                   );
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Enter the name of what you\'re selling',
+                ),
+                onSaved: (value) {
+                  listing.produceName = value;
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a description';
+                  }
+                  return null;
                 },
               ),
               TextFormField(
@@ -296,18 +314,19 @@ class _CreateListingFormState extends State<CreateListingForm> {
                         .get();
                     listing.name = snapshot.value.toString();
                     listing.location = await determinePosition();
-                    String? newKey =
-                        await database.child('listings').push().key;
-                    database
-                        .child('listings')
-                        .child(newKey!)
-                        .set(listing.toJson())
-                        .then((value) => {
-                              database
-                                  .child(
-                                      'userProfiles/${currentUser?.uid}/userListings/${DateTime.now().microsecondsSinceEpoch}')
-                                  .set(newKey)
-                            });
+                     String? newKey =
+                         await database.child('listings').push().key;
+                     database
+                         .child('listings')
+                         .child(newKey!)
+                         .set(listing.toJson())
+                         .then((value) => {
+                               database
+                                   .child(
+                                       'userProfiles/${currentUser?.uid}/userListings/${DateTime.now().microsecondsSinceEpoch}')
+                                   .set(newKey)
+                             });
+                    setState(() {});
                   }
                 },
                 child: const Text('Submit'),
