@@ -1,5 +1,4 @@
 // Stores users into the database after they've logged in
-
 import 'package:firebase_database/firebase_database.dart';
 
 final database = FirebaseDatabase.instance.ref();
@@ -10,9 +9,10 @@ void storeUserInFirebase(
   userProfiles.child(id).once(DatabaseEventType.value).then((value) => {
         if (!value.snapshot.exists)
           {
-            userProfiles
-                .child(id)
-                .set({'name': name, 'email': email}).then((value) {
+            userProfiles.child(id).set({
+              'name': name,
+              'email': email,
+            }).then((value) {
               print('User stored successfully in Firebase');
               callback();
             }).catchError((error) {
