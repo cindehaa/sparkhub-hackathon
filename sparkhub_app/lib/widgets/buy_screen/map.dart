@@ -80,12 +80,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Container(
-              width: 500,
-              height: 500,
-              color: Colors.blue,
-              child: const Text('WAITING'),
-            );
+            return const CircularProgressIndicator();
           case ConnectionState.done:
             return GoogleMap(
               polylines: polyLines,

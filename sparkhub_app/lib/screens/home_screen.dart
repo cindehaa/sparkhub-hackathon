@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sparkhub_app/widgets/home_screen/Navbar.dart';
 import 'package:sparkhub_app/widgets/home_screen/buy_page.dart';
 import 'package:sparkhub_app/widgets/home_screen/create_listing_page.dart';
-import 'package:sparkhub_app/widgets/home_screen/profile_page.dart';
+import 'package:sparkhub_app/widgets/profile_screen/profile_page.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 late User? user;
