@@ -33,12 +33,6 @@ class _NewListingScreenState extends State<NewListingScreen> {
     return Material(
       child: Stack(
         children: [
-          InkWell(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: const Icon(Icons.arrow_back),
-          ),
           Column(children: [
             Row(
               children: [
@@ -174,7 +168,13 @@ class _NewListingScreenState extends State<NewListingScreen> {
                 ),
               ],
             )
-          ])
+          ]),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: const Icon(Icons.arrow_back),
+          ),
         ],
       ),
     );

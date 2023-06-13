@@ -4,8 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:sparkhub_app/models/listing_model.dart';
+import 'package:sparkhub_app/screens/home_screen.dart';
 import 'package:sparkhub_app/utils/authentication.dart';
-import 'package:sparkhub_app/widgets/profile_screen/account_history_widget.dart';
+import 'package:sparkhub_app/utils/retrive_user_listing.dart';
+import 'package:sparkhub_app/widgets/home_screen/Navbar.dart';
+import 'package:sparkhub_app/widgets/profile_screen/account_listings_widget.dart';
 import 'package:sparkhub_app/widgets/profile_screen/profile_picture_widget.dart';
 import 'package:sparkhub_app/widgets/profile_screen/user_details_widget.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -26,6 +30,8 @@ class _ProfilePageState extends State<ProfilePage> {
   // User profile data
   String name = '';
   String email = '';
+  late Future<List<listing_model>>? listings;
+  bool waiting = true;
 
   @override
   void initState() {
@@ -35,6 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
     auth = FirebaseAuth.instance;
     currentUser = auth.currentUser;
     retrieveUserProfile();
+    listings = retrieveListingsInFirebase();
   }
 
   void retrieveUserProfile() async {
@@ -82,6 +89,20 @@ class _ProfilePageState extends State<ProfilePage> {
               child: SizedBox(),
             ),
           ),
+          Expanded(
+              child: FutureBuilder(
+            future: listings,
+            builder: (context, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return const CircularProgressIndicator();
+                case ConnectionState.done:
+                  return AccountListingsWidget(history: snapshot.data!);
+                default:
+                  return const Text('You have no listings');
+              }
+            },
+          ))
           // Expanded(
           //   child: AccountHistoryWidget(history: accountHistory),
           // ),

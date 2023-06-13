@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:sparkhub_app/models/listing_model.dart';
 import 'package:sparkhub_app/utils/getLocation.dart';
+import 'package:sparkhub_app/widgets/buy_screen/item_card.dart';
 
 final database = FirebaseDatabase.instance.ref();
 FirebaseAuth auth = FirebaseAuth.instance;
@@ -44,6 +45,7 @@ class _CreateListingFormState extends State<CreateListingForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              if (listing.associatedFarm != null) ItemCard(listingObj: listing),
               FormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {

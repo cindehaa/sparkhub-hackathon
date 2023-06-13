@@ -35,7 +35,7 @@ class listing_model {
         'category': category,
         'description': description,
         'inventory': inventory,
-        'picture': image?.map((e) => e.toString()),
+        'picture': image?.map((e) => String.fromCharCodes(e)),
         'seller': name,
         'uid': uid,
         'unitprice': unitPrice,
@@ -45,7 +45,7 @@ class listing_model {
 
   listing_model fromJson(Map json) {
     final pictureList = json['picture'];
-    List<Uint8List> convertedPictureList = [];
+    List<Uint8List> convertedPictureList = <Uint8List>[];
     for (final value in pictureList) {
       convertedPictureList.add(Uint8List.fromList(value.codeUnits));
     }
