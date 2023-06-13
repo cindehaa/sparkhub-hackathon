@@ -24,9 +24,10 @@ class _GoogleLoginButtonState extends State<GoogleLoginButton> {
         setState(() {
           _isProcessing = true;
         });
-        await signInWithGoogle().then((user) {
+        await signInWithGoogle().then((user) async {
           if (user != null) {
             print('Signed In');
+
             storeUserInFirebase(user.uid, user.displayName, user.email, () {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const HomeScreen()));
