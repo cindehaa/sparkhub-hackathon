@@ -3,9 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:sparkhub_app/screens/home_screen.dart';
 
-import 'package:sparkhub_app/utils/retrive_user_listing.dart';
 import 'package:sparkhub_app/widgets/GoogleLoginButton.dart';
-
 
 import 'firebase_options.dart';
 import 'package:sparkhub_app/screens/login_screen.dart';
@@ -33,9 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:                
-        LoginScreen(),
-
+      home: LoginScreen(),
       initialRoute: '/',
     );
   }

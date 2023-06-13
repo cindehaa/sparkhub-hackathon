@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -8,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:sparkhub_app/models/listing_model.dart';
 import 'package:sparkhub_app/utils/getLocation.dart';
-import 'package:sparkhub_app/widgets/buy_screen/item_card.dart';
 
 final database = FirebaseDatabase.instance.ref();
 FirebaseAuth auth = FirebaseAuth.instance;
@@ -261,7 +257,7 @@ class _CreateListingFormState extends State<CreateListingForm> {
                   hintText: 'Enter a unit price',
                 ),
                 onSaved: (value) {
-                  listing.unitPrice = int.parse(value!);
+                  listing.unitPrice = double.parse(value!);
                 },
                 validator: (value) {
                   if (value == null ||
@@ -314,24 +310,23 @@ class _CreateListingFormState extends State<CreateListingForm> {
                         .get();
                     listing.name = snapshot.value.toString();
                     listing.location = await determinePosition();
-                     String? newKey =
-                         await database.child('listings').push().key;
-                     database
-                         .child('listings')
-                         .child(newKey!)
-                         .set(listing.toJson())
-                         .then((value) => {
-                               database
-                                   .child(
-                                       'userProfiles/${currentUser?.uid}/userListings/${DateTime.now().microsecondsSinceEpoch}')
-                                   .set(newKey)
-                             });
+                    String? newKey =
+                        await database.child('listings').push().key;
+                    database
+                        .child('listings')
+                        .child(newKey!)
+                        .set(listing.toJson())
+                        .then((value) => {
+                              database
+                                  .child(
+                                      'userProfiles/${currentUser?.uid}/userListings/${DateTime.now().microsecondsSinceEpoch}')
+                                  .set(newKey)
+                            });
                     setState(() {});
                   }
                 },
                 child: const Text('Submit'),
               ),
-
             ],
           ),
         ),
