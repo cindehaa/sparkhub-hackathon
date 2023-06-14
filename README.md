@@ -13,8 +13,7 @@
   <a href="#how-to-use">How To Use</a> •
   <a href="#ui-blueprint">UI Blueprint</a> •
   <a href="#links">Links</a> •
-    <a href="#roadmap">Roadmap</a> •
-
+  <a href="#roadmap">Roadmap</a> •
   <a href="#contributors">Contributors</a> 
 </p>
 
