@@ -129,6 +129,7 @@ class _NewListingScreenState extends State<NewListingScreen> {
                 Column(
                   children: [
                     Text('${widget.listingObj.produceName}'),
+                    Text('${widget.listingObj.associatedFarm}'),
                     Text('${widget.listingObj.description}')
                   ],
                 ),
