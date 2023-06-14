@@ -30,6 +30,8 @@ class _ProfilePageState extends State<ProfilePage> {
   // User profile data
   String name = '';
   String email = '';
+  String farm = '';
+  String bio = '';
   late Future<List<listing_model>>? listings;
   bool waiting = true;
 
@@ -55,10 +57,23 @@ class _ProfilePageState extends State<ProfilePage> {
       setState(() {
         name = data_vals['name'];
         email = data_vals['email'];
+        farm = data_vals['farm'];
+        bio = data_vals['bio'];
+
+        if (farm == null || farm == '') {
+          farm = 'No Farm Added';
+        }
+
+        if (bio == null || bio == '') {
+          bio = 'No Bio Added';
+        }
       });
     } else {
       print('No data available.');
     }
+
+    print(farm);
+    print(bio);
   }
 
   @override
@@ -74,8 +89,9 @@ class _ProfilePageState extends State<ProfilePage> {
               alignment: Alignment.topCenter,
               child: FractionallySizedBox(
                 widthFactor: 0.9,
-                heightFactor: 0.4,
-                child: UserDetailsWidget(name: name, email: email),
+                heightFactor: 0.8,
+                child: UserDetailsWidget(
+                    name: name, email: email, farm: farm, bio: bio),
               ),
             ),
           ),
@@ -83,26 +99,35 @@ class _ProfilePageState extends State<ProfilePage> {
           // Spacing between profile info and listings
           Container(
             height: MediaQuery.of(context).size.height *
-                0.1, // Set the height to 10% of the screen height
+                0.05, // Set the height to 10% of the screen height
             child: FractionallySizedBox(
               alignment: Alignment.topCenter,
               child: SizedBox(),
             ),
           ),
+
           Expanded(
-              child: FutureBuilder(
-            future: listings,
-            builder: (context, snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.waiting:
-                  return const CircularProgressIndicator();
-                case ConnectionState.done:
-                  return AccountListingsWidget(history: snapshot.data!);
-                default:
+            child: FutureBuilder(
+              future: listings,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.connectionState == ConnectionState.done) {
+                  return Align(
+                    alignment: Alignment.topCenter,
+                    child: FractionallySizedBox(
+                      widthFactor: 0.9,
+                      // heightFactor: 0.5,
+                      child: AccountListingsWidget(history: snapshot.data!),
+                    ),
+                  );
+                } else {
                   return const Text('You have no listings');
-              }
-            },
-          ))
+                }
+              },
+            ),
+          )
+
           // Expanded(
           //   child: AccountHistoryWidget(history: accountHistory),
           // ),
