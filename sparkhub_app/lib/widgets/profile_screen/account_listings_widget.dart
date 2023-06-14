@@ -17,12 +17,15 @@ class _AccountListingsWidgetState extends State<AccountListingsWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
           'Account Listings',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         Wrap(
+          spacing: 50,
+          runSpacing: 50,
           children: List.generate(
             widget.history.length,
             (index) => ItemCard(listingObj: widget.history[index]),
