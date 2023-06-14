@@ -89,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage> {
               alignment: Alignment.topCenter,
               child: FractionallySizedBox(
                 widthFactor: 0.9,
-                heightFactor: 0.8,
+                heightFactor: 0.6,
                 child: UserDetailsWidget(
                     name: name, email: email, farm: farm, bio: bio),
               ),
@@ -117,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     alignment: Alignment.topCenter,
                     child: FractionallySizedBox(
                       widthFactor: 0.9,
-                      // heightFactor: 0.5,
+                      // heightFactor: 0.7,
                       child: AccountListingsWidget(history: snapshot.data!),
                     ),
                   );
