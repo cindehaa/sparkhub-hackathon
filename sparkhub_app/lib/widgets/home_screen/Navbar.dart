@@ -14,6 +14,11 @@ class _NavbarState extends State<Navbar> {
   @override
   Widget build(BuildContext context) {
     return NavigationRail(
+      selectedIconTheme: const IconThemeData(color: Colors.white),
+      unselectedIconTheme: const IconThemeData(color: Colors.white),
+      selectedLabelTextStyle: const TextStyle(color: Colors.white),
+      unselectedLabelTextStyle: const TextStyle(color: Colors.white),
+      backgroundColor: Color.fromARGB(255, 36, 102, 39),
       selectedIndex: _selectedState,
       groupAlignment: -1,
       labelType: NavigationRailLabelType.all,

@@ -17,27 +17,43 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => NewListingScreen(
-                  listingObj: listingObj,
-                )));
-      },
-      child: SizedBox(
-        width: 200,
-        child: Column(
-          children: [
-            Image.memory(listingObj.image!.first),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(listingObj.produceName!),
-                Text('\$${listingObj.unitPrice} ${listingObj.priceType}'),
-              ],
-            ),
-            Text('${listingObj.category}'),
-          ],
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white70,
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(255, 146, 146, 146).withOpacity(0.2),
+            spreadRadius: 5,
+            blurRadius: 5,
+            offset: const Offset(6, 6),
+          ),
+        ],
+        borderRadius: const BorderRadius.all(
+          Radius.circular(5),
+        ),
+      ),
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => NewListingScreen(
+                    listingObj: listingObj,
+                  )));
+        },
+        child: SizedBox(
+          width: 200,
+          child: Column(
+            children: [
+              Image.memory(listingObj.image!.first),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(listingObj.produceName!),
+                  Text('\$${listingObj.unitPrice} ${listingObj.priceType}'),
+                ],
+              ),
+              Text('${listingObj.category}'),
+            ],
+          ),
         ),
       ),
     );

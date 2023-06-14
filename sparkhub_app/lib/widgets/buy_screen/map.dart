@@ -70,6 +70,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
 
   @override
   void initState() {
+    super.initState();
     location = determinePosition();
   }
 
@@ -91,26 +92,21 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
                     infoWindow: const InfoWindow(
                       title: 'Destination',
                     ),
-                    markerId: MarkerId(
-                        '${widget.markerPosition!.latitude}, ${widget.markerPosition!.longitude}'),
-                    position: LatLng(widget.markerPosition!.latitude,
-                        widget.markerPosition!.longitude),
+                    markerId: MarkerId('${37.5485}, ${-121.9886}'),
+                    position: LatLng(37.5485, -121.9886),
                     draggable: false,
                   ),
                 Marker(
                   infoWindow: const InfoWindow(
                     title: 'Start',
                   ),
-                  markerId: MarkerId(
-                      '${snapshot.data!.latitude}, ${snapshot.data!.longitude}'),
-                  position:
-                      LatLng(snapshot.data!.latitude, snapshot.data!.longitude),
+                  markerId: MarkerId('${37.7749}, ${-122.4194}'),
+                  position: LatLng(37.7749, -122.4194),
                   draggable: false,
                 )
               },
               initialCameraPosition: CameraPosition(
-                target:
-                    LatLng(snapshot.data!.latitude, snapshot.data!.longitude),
+                target: LatLng(37.7749, -122.4194),
                 zoom: 14.7,
               ),
               onMapCreated: (GoogleMapController controller) {
@@ -118,33 +114,15 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
                 controller.moveCamera(
                   CameraUpdate.newLatLngBounds(
                     LatLngBounds(
-                      northeast: LatLng(
-                          snapshot.data!.latitude <=
-                                  widget.markerPosition!.latitude
-                              ? widget.markerPosition!.latitude
-                              : snapshot.data!.latitude,
-                          snapshot.data!.longitude <=
-                                  widget.markerPosition!.longitude
-                              ? widget.markerPosition!.longitude
-                              : snapshot.data!.longitude),
-                      southwest: LatLng(
-                          snapshot.data!.latitude <=
-                                  widget.markerPosition!.latitude
-                              ? snapshot.data!.latitude
-                              : widget.markerPosition!.latitude,
-                          snapshot.data!.longitude <=
-                                  widget.markerPosition!.longitude
-                              ? snapshot.data!.longitude
-                              : widget.markerPosition!.longitude),
+                      northeast: LatLng(37.7749 <= 37.5485 ? 37.5485 : 37.7749,
+                          -122.4194 <= -121.9886 ? -121.9886 : -122.4194),
+                      southwest: LatLng(37.7749 <= 37.5485 ? 37.7749 : 37.5485,
+                          -122.4194 <= -121.9886 ? -122.4194 : -121.9886),
                     ),
                     100.0,
                   ),
                 );
-                getJsonData(
-                    snapshot.data!.latitude,
-                    snapshot.data!.longitude,
-                    widget.markerPosition!.latitude,
-                    widget.markerPosition!.longitude);
+                getJsonData(37.7749, -122.4194, 37.5485, -121.9886);
               },
             );
           default:
