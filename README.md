@@ -2,9 +2,9 @@
   <br>
   <i>HarvestHub</i> for Sparkhub Summer Hackathon
   <br>
+  <img src="sparkhub_app/assets/harvest_hub.png" alt="HarvestHub's Logo" width="30%">
 </h1>
 
-![HarvestHub's Logo](sparkhub_app/assets/harvest_hub.png)
 
 <h4 align="center">Farmers Market at Your Finger Tips</h4>
 
