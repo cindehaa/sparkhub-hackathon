@@ -77,14 +77,14 @@ We'd like to continue working on the website, implementing a ratings and deliver
 
 ---
 > Cindy's GitHub [@cindehaa](https://github.com/cindehaa) &nbsp;&middot;&nbsp;
-> Cindy's LinkedIn [@cindehaa](https://www.linkedin.com/in/cindehaa/) &nbsp;&middot;&nbsp;
+> Cindy's LinkedIn [@cindehaa](https://www.linkedin.com/in/cindehaa/) 
 
 
-> Han's GitHub [@Cookei](https://github.com/Cookei) &nbsp;&middot;&nbsp;
+> Han's GitHub [@Cookei](https://github.com/Cookei) 
 
 
 > Annie's GitHub [@anniezhang2288](https://github.com/anniezhang2288)  &nbsp;&middot;&nbsp;
-> Annie's LinkedIn [@annie-zhang-34a125203](https://www.linkedin.com/in/annie-zhang-34a125203)&nbsp;&middot;&nbsp;
+> Annie's LinkedIn [@annie-zhang-34a125203](https://www.linkedin.com/in/annie-zhang-34a125203)
 
 
-> Simin's GitHub [@wangs678](https://github.com/wangs678)  &nbsp;&middot;&nbsp;
+> Simin's GitHub [@wangs678](https://github.com/wangs678) 
