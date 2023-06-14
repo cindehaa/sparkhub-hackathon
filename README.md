@@ -32,6 +32,7 @@ We've outlined our specific website features, technologies used, and future road
 * Create and view produce listings
 * Include name, description, category, associated farm, multiple photos, price, and inventory amount for each listing
 * Listings also include a map that shows the distance of the buyer from the seller
+* A feature section in the listings screen to show the foods currently in season
 
 ## Technologies
 * Google authentication to connect each user account to their account using Firebase
