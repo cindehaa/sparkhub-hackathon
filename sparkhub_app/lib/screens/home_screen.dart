@@ -34,8 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         }),
         const VerticalDivider(
-          width: 1,
-          thickness: 1,
+          width: 2,
+          thickness: 2,
         ),
         Expanded(
           child: IndexedStack(

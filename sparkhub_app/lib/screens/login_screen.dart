@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sparkhub_app/widgets/GoogleLoginButton.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:io';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
     //String imageUrl = "https://media.istockphoto.com/id/1170724138/vector/farmers-market-hand-drawn-lettering.jpg?s=612x612&w=0&k=20&c=__LbJVEDLc66smBIk7BRHgoo2HfCYysOGJfiTD3AImA=";
 
     return Scaffold(
-      backgroundColor: const Color(0xFF408444),
+      backgroundColor: Color.fromARGB(255, 64, 132, 68),
       body: Center(
         child: Padding(
             padding: const EdgeInsets.all(25.0),
@@ -25,56 +26,39 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Row(
                   // logo + name
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    //Image.network(imageUrl),
-                    // const Text(
-                    //   'Sparkhub \nHackathon App',
-                    //   style: TextStyle(
-                    //     color: Color(),
-                    //    )
-                    //   )
-                    Text(
-                      'Sparkhub \nHackathon App',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.lobster(
-                        fontSize: 48,
-                        textStyle: TextStyle(color: Color(0xFFEAD7B2)),
+                    Image.asset(
+                      'assets/harvest_hub.png',
+                      height: 600,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'Farmers market at\nyour fingertips',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lato(
+                              fontSize: 75,
+                              textStyle: const TextStyle(shadows: [
+                                Shadow(
+                                  offset: Offset(6, 6),
+                                  blurRadius: 2,
+                                  color: Color.fromARGB(134, 5, 46, 4),
+                                )
+                              ], color: Color.fromARGB(255, 234, 215, 178)),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 100,
+                          ),
+                          GoogleLoginButton()
+                        ],
                       ),
                     )
-                  ],
-                ),
-                SizedBox(height: 30),
-
-                Row(
-                  // about and description section
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'slogan',
-                          style: GoogleFonts.lato(
-                              fontSize: 36,
-                              textStyle: TextStyle(color: Color(0xFFEAD7B2))),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                // const Row( // login button row
-                //   mainAxisAlignment: MainAxisAlignment.center,
-
-                //   children: [GoogleLoginButton(),],
-                // ),
-                SizedBox(height: 30),
-                Row(
-                  // login button row
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    GoogleLoginButton(),
                   ],
                 ),
               ],
