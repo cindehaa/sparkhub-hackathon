@@ -4,6 +4,8 @@
   <br>
 </h1>
 
+![HarvestHub's Logo](sparkhub_app/assets/harvest_hub.png)
+
 <h4 align="center">Farmers Market at Your Finger Tips</h4>
 
 <p align="center">
