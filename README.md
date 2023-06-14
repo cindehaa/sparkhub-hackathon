@@ -13,6 +13,8 @@
   <a href="#how-to-use">How To Use</a> •
   <a href="#ui-blueprint">UI Blueprint</a> •
   <a href="#links">Links</a> •
+    <a href="#roadmap">Roadmap</a> •
+
   <a href="#contributors">Contributors</a> 
 </p>
 
@@ -67,6 +69,9 @@ DevPost:
 * Annie Zhang: Full Stack
 * Cindy Li: Full Stack
 * Simin Wang: Graphic and UI/UX Designer
+
+## Roadmap
+We'd like to continue working on the website, implementing a ratings and deliveries features. We believe that our website will be extremely practical in the real world, and it's our hope that this idea will be one that can benefit businesses and farmers in our cities.
 
 ---
 > Cindy's GitHub [@cindehaa](https://github.com/cindehaa) &nbsp;&middot;&nbsp;
