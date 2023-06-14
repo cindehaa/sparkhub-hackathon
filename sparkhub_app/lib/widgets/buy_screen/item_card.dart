@@ -15,8 +15,10 @@ class ItemCard extends StatelessWidget {
 // tomato for now because why not
   final String keyword = 'farmers market';
 
+
   @override
   Widget build(BuildContext context) {
+
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
@@ -36,7 +38,7 @@ class ItemCard extends StatelessWidget {
                 Text('\$${listingObj.unitPrice} ${listingObj.priceType}'),
               ],
             ),
-            Text('${listingObj.category}'),
+            Text('Category: ${listingObj.category}'),
           ],
         ),
       ),
