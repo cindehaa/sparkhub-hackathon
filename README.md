@@ -55,6 +55,7 @@ git clone https://github.com/cindehaa/sparkhub-hackathon
 flutter pub get
 4. Run the application
 flutter run
+5. Install all the necessary APIs. Google Firebase Realtime Database and Auth. OpenRouteServices.
 
 ## UI Blueprint
 Our inital vision for the website can be found [here](https://drive.google.com/file/d/1etcueorTo19ERqrDJEyxantDRZmUsMKa/view?usp=drive_link).
@@ -65,7 +66,7 @@ Video Pitch:
 DevPost:
 
 ## Contributors
-* Han Li: Full Stack
+* Han Li: Full Stack & Therapy
 * Annie Zhang: Full Stack
 * Cindy Li: Full Stack
 * Simin Wang: Graphic and UI/UX Designer
