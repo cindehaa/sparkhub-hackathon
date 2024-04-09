@@ -2,8 +2,12 @@
   <br>
   <i>HarvestHub</i> for Sparkhub Summer Hackathon
   <br>
-  <img src="sparkhub_app/assets/harvest_hub.png" alt="HarvestHub's Logo" width="30%">
 </h1>
+<p align="center">
+    ⭐ Winner of Best Overall Project ⭐
+    <br>
+    <img src="sparkhub_app/assets/harvest_hub.png" alt="HarvestHub's Logo" width="30%">
+</p>
 
 
 <h4 align="center">Farmers Market at Your Finger Tips</h4>
